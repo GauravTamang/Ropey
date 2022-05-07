@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Ropey.Models.Dvdtitle>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="col-4 p-0 justify-content-end">
+    <form asp-controller="Dvdtitles" asp-action="Index">
+        <span class="btn-group">
+             <input class-"form-control" type="text" name-"SearchText"
+                    placeholder="Search Key">
+             <input class="p-1 ml-2 btn btn-sm btn-info" type="submit" value="Search" />
+        </span>
+    </form>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Dvdtitle1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateReleased)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StandardCharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PenaltyCharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryNumberNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProducerNumberNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudioNumberNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dvdtitle1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateReleased)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StandardCharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PenaltyCharge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryNumberNavigation.CategoryNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProducerNumberNavigation.ProducerNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudioNumberNavigation.StudioNumber)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Dvdnumber">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Dvdnumber">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Dvdnumber">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

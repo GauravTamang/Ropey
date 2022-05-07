@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Ropey.Models.Member>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MembershipLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MembershipFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberDateofBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MembershipCategoryNumberNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MembershipLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MembershipFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemberAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemberDateofBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MembershipCategoryNumberNavigation.MembershipCategoryNumber)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MemberNumber">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MemberNumber">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MemberNumber">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
